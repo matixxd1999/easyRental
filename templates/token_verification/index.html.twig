@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}token{% endblock %}
+
+{% block body %}
+
+    {% set vars = {'token': 'active'} %}
+
+
+    {% include 'index_user_page/spinner_start.html.twig' %}
+    {% include 'index_user_page/topbar_start.html.twig' %}
+    {% include 'index_user_page/navbar_start.html.twig' with vars %}
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="bg-light mt-5 p-5 col-lg-5 horizontal-form-center shadow-forms">
+
+
+                {{ form_start(verificationForm) }}
+                {{ form_row(verificationForm.code) }}
+                {{ form_widget(verificationForm.submit, {'attr': {'class': 'btn btn-primary mb-2'}}) }}
+                {{ form_end(verificationForm) }}
+
+                <a href="{{ path('app_token_verification', {sendTokenAgain: true}) }}" class="active-text-black">Token nie przyszedł? Wyślij jeszcze raz!</a>
+
+                {% for label, messages in app.flashes(['success', 'warning', 'danger']) %}
+                    {% for message in messages %}
+                        <div class="mt-3 alert alert-dismissible fade show alert-{{ label }}" role="alert">
+                            <strong>{{ message }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+    {% include 'index_user_page/footer_start.html.twig' %}
+    {% include 'index_user_page/copyright_start.html.twig' %}
+    {% include 'index_user_page/back_to_top.html.twig' %}
+
+{% endblock %}

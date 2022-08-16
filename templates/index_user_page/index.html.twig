@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    {% set vars = {'index': 'active'} %}
+
+
+    {% include 'index_user_page/spinner_start.html.twig' %}
+    {% include 'index_user_page/topbar_start.html.twig' %}
+    {% include 'index_user_page/navbar_start.html.twig' with vars %}
+    {% include 'index_user_page/carousel_start.html.twig' %}
+    {% include 'index_user_page/facts_start.html.twig' %}
+    {% include 'index_user_page/about_start.html.twig' %}
+    {% include 'index_user_page/hotels_start.html.twig' %}
+    {% include 'index_user_page/features_start.html.twig' %}
+    {% include 'index_user_page/team_start.html.twig' %}
+    {% include 'index_user_page/testimonial_start.html.twig' %}
+    {% include 'index_user_page/footer_start.html.twig' %}
+    {% include 'index_user_page/copyright_start.html.twig' %}
+    {% include 'index_user_page/back_to_top.html.twig' %}
+
+{#    <!-- Modal -->#}
+{#    <div class="modal fade mt-5" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">#}
+{#        <div class="modal-dialog">#}
+{#            <div class="modal-content">#}
+{#                <div class="modal-header">#}
+{#                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>#}
+{#                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>#}
+{#                </div>#}
+{#                <div class="modal-body">#}
+{#                    ...#}
+{#                </div>#}
+{#                <div class="modal-footer">#}
+{#                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>#}
+{#                    <a href="" type="button" class="btn btn-primary">Understood</a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+{% endblock %}
+
+{#    {% block javascripts %}#}
+{#        {{ parent() }}#}
+
+{#        <script type="text/javascript">#}
+
+{#                $(window).on('load', function () {#}
+{#                let btn = document.getElementById('btn');#}
+{#                console.log(btn);#}
+{#                    if (btn) {#}
+{#                        btn.addEventListener('click', () => {#}
+{#                            console.log(btn); // null#}
+{#                            $('#staticBackdrop').modal('show');#}
+{#                        });#}
+{#                    }#}
+{#                });#}
+{#        </script>#}
+
+{#    {% endblock %}#}
+
+
+
+
+
+
+

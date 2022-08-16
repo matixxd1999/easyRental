@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+    {% set vars = {'register': 'active'} %}
+
+
+    {% include 'index_user_page/spinner_start.html.twig' %}
+    {% include 'index_user_page/topbar_start.html.twig' %}
+    {% include 'index_user_page/navbar_start.html.twig' with vars %}
+
+        <div class="container">
+            <div class="row">
+                <div class="bg-light mt-5 p-5 col-lg-5 horizontal-form-center shadow-forms">
+                    <h1>Rejestracja</h1>
+                    {{ form_start(registrationForm) }}
+                        {{ form_row(registrationForm.firstName) }}
+                        {{ form_row(registrationForm.lastName) }}
+                        {{ form_row(registrationForm.phoneNumber) }}
+                        {{ form_row(registrationForm.email) }}
+                        {{ form_row(registrationForm.plainPassword) }}
+                        {{ form_row(registrationForm.repeatPassword) }}
+                            {% if error is defined %}
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Wpisane hasła różnią się od siebie !!!</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endif %}
+                        {{ form_row(registrationForm.agreeTerms) }}
+                        <button type="submit" class="btn btn-primary col-lg-12">Register</button>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+
+
+
+
+    {% include 'index_user_page/footer_start.html.twig' %}
+    {% include 'index_user_page/copyright_start.html.twig' %}
+    {% include 'index_user_page/back_to_top.html.twig' %}
+
+{% endblock %}

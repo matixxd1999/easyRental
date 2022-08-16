@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+            <h2 class="m-0"><i class="fa fa-hotel text-primary me-2"></i>Hotel</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                {% if 1==0 %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('admin') }}" class="nav-item nav-link active-text-red" >Admin</a>
+                    {% endif %}
+
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a href="{{ path('app_index_user_page') }}" class="nav-item nav-link {% if index is defined %} active {% endif %}">Strona Główna</a>
+                        <a href="about.html" class="nav-item nav-link {% if about is defined %} active {% endif %}">O nas</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle {% if hotels is defined %} active {% endif %}" data-bs-toggle="dropdown">Hotele</a>
+                            <div class="dropdown-menu bg-light m-0">
+                                <a href="feature.html" class="dropdown-item">Pawłów</a>
+                                <a href="appointment.html" class="dropdown-item">Nędza</a>
+                                <a href="team.html" class="dropdown-item">Racibórz</a>
+                                <a href="testimonial.html" class="dropdown-item">Cyprzanów</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link {% if contact is defined %} active {% endif %}">Kontakt</a>
+
+                        <h5><a href="{{ path('app_logout') }}" class="nav-item nav-link bi bi-box-arrow-in-right heading {% if logout is defined %} active {% endif %}"></a></h5>
+                        <h5><a href="" class="nav-item nav-link bi bi-person-circle heading {% if logout is defined %} active {% endif %}"></a></h5>
+
+                    {% else %}
+                        <a href="{{ path('app_index_user_page') }}" class="nav-item nav-link {% if index is defined %} active {% endif %}">Strona Główna</a>
+                        <a href="about.html" class="nav-item nav-link {% if about is defined %} active {% endif %}">O nas</a>
+
+                        <a href="{{ path('app_register') }}" class="nav-item nav-link {% if register is defined %} active {% endif %}">Rejestracja</a>
+                        <a href="{{ path('app_login') }}" class="nav-item nav-link {% if login is defined %} active {% endif %}">Logowanie</a>
+                    {% endif %}
+
+
+
+
+                {% else %}
+                    {% if checkAcctiveAccount is defined %} <a href="{{ path('app_token_verification') }}" class="nav-item nav-link" style="color: red;"><b> konto nie jest jeszcze aktywne, kliknij aby potwierdzić swój E-mail</b></a> {% endif %}
+                    <a href="{{ path('admin') }}" class="nav-item nav-link" >Admin</a>
+                    <a href="{{ path('app_index_user_page') }}" class="nav-item nav-link {% if index is defined %} active {% endif %}">Strona Główna</a>
+                    <a href="about.html" class="nav-item nav-link {% if about is defined %} active {% endif %}">O nas</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle {% if hotels is defined %} active {% endif %}" data-bs-toggle="dropdown">Hotele</a>
+                        <div class="dropdown-menu bg-light m-0">
+                            <a href="feature.html" class="dropdown-item">Pawłów</a>
+                            <a href="appointment.html" class="dropdown-item">Nędza</a>
+                            <a href="team.html" class="dropdown-item">Racibórz</a>
+                            <a href="testimonial.html" class="dropdown-item">Cyprzanów</a>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link {% if contact is defined %} active {% endif %}">Kontakt</a>
+                    <a href="{{ path('app_register') }}" class="nav-item nav-link {% if register is defined %} active {% endif %}">Rejestracja</a>
+                    <a href="{{ path('app_login') }}" class="nav-item nav-link {% if login is defined %} active {% endif %}">Logowanie</a>
+                    <a href="{{ path('app_looged_in_user_index_page') }}" class="nav-item nav-link bi bi-person-circle heading {% if logout is defined %} active {% endif %}"> Profil</a>
+                    <a href="{{ path('app_logout') }}" class="nav-item nav-link bi bi-box-arrow-in-right {% if logout is defined %} active {% endif %}"> wyloguj</a>
+                {% endif %}
+
+
+
+
+            </div>
+{#            <a href="{{ path('app_login') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block {% if login is defined %} active {% endif %}">Logowanie<i class="fa fa-arrow-right ms-3"></i></a>#}
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+{% endblock %}
